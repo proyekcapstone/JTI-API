@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
     .route('/')
-    .post(validate(hotelValidation.createHotel), hotelController.createHotel)
+    .post(uploadImg.single('image'), validate(hotelValidation.createHotel), hotelController.createHotel)
     .get(hotelController.getHotels);
 
 module.exports = router;

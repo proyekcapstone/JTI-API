@@ -5,7 +5,8 @@ const catchAsync = require("../utils/catchAsync");
 
 const createHotel = catchAsync(async (req, res) => {
     try {
-        const hotel = await hotelService.createHotel(req.body);
+        const image = req.file.path;
+        const hotel = await hotelService.createHotel(req.body, image);
         res.status(httpStatus.CREATED).send(hotel);
     } catch (error) {
         throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);

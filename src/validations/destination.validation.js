@@ -3,7 +3,7 @@ const Joi = require('joi');
 const createDestination = {
     body: Joi.object().keys({
         name: Joi.string().required(),
-        image: Joi.string().required(),
+        image: Joi.string(),
         description: Joi.string().required(),
         address: Joi.string().required(),
         city: Joi.string().required(),

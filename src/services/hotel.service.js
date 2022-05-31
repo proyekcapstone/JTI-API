@@ -8,15 +8,15 @@ const ApiError = require("../utils/ApiError");
  * @param {String} image 
  * @returns {Promise<Hotel>}
  */
-const createHotel = async (hotelBody) => {
-    // if (!imageHotel) {
-    //     throw new ApiError(httpStatus.NOT_FOUND, 'Image Not Found!');
-    // }
+const createHotel = async (hotelBody, image) => {
+    if (!image) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Image Not Found!');
+    }
     const hotel = {
         name: hotelBody.name,
+        image: image,
         description: hotelBody.description,
     };
-    // imageHotel: imageHotel,
     return Hotel.create(hotel);
 };
 

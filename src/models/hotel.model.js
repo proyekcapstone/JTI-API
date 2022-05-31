@@ -8,12 +8,32 @@ const hotelSchema = mongoose.Schema(
             required: true,
             unique: true,
         },
-        // imageHotel: {
-        //     type: String,
-        //     required: true,
-        // },
+        image: {
+            type: String,
+            required: true,
+        },
         description: {
             type: String,
+            required: true,
+        },
+         address: {
+            type: String,
+            required: true,
+        },
+        city: {
+            type: String,
+            required: true,
+        },
+        province: {
+            type: String,
+            required: true,
+        },
+        postalCode: {
+            type: Number,
+            required: true,
+        },
+        telephone: {
+            type: Number,
             required: true,
         },
     },
