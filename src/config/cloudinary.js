@@ -18,9 +18,9 @@ const storage = new CloudinaryStorage({
             transformation: {
                 quality: 75,
             },
-        }
+        };
     }
-})
+});
 
 const uploadImg = multer({ storage: storage });
 

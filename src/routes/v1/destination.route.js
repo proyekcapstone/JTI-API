@@ -9,7 +9,7 @@ const router = express.Router();
 
 router
     .route('/')
-    .post(auth('moderator'), uploadImg.single('image'), validate(destinationValidation.createDestination), destinationController.createDestination)
-    .get(auth('user'), destinationController.getDestinations);
+    .post(uploadImg.single('image'), validate(destinationValidation.createDestination), destinationController.createDestination)
+    .get(destinationController.getDestinations);
 
-module.exports = router
+module.exports = router;
