@@ -21,9 +21,6 @@ if (config.env !== 'test') {
   app.use(morgan.errorHandler);
 }
 
-// set security HTTP headers
-app.use(helmet());
-
 // parse json request body
 app.use(express.json());
 
@@ -36,6 +33,9 @@ app.use(mongoSanitize());
 
 // gzip compression
 app.use(compression());
+
+// set security HTTP headers
+app.use(helmet());
 
 // enable cors
 app.use(cors());
