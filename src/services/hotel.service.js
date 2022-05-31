@@ -16,6 +16,11 @@ const createHotel = async (hotelBody, image) => {
         name: hotelBody.name,
         image: image,
         description: hotelBody.description,
+        address: hotelBody.address,
+        city: hotelBody.city,
+        province: hotelBody.province,
+        postalcode: hotelBody.postalcode,
+        telephone: hotelBody.telephone
     };
     return Hotel.create(hotel);
 };
