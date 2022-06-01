@@ -16,5 +16,6 @@ router
 router
     .route('/:id')
     .get(destinationController.getDestination)
+    .put(uploadImg.single('image'), validate(destinationValidation.updateDestination), destinationController.updateDestination)
 
 module.exports = router;

@@ -31,8 +31,19 @@ const getDestination = catchAsync(async (req, res) => {
     }
 })
 
+const updateDestination = catchAsync(async (req, res) => {
+    try {
+        const image = req.file.path;
+        const destination = await destinationService.updateDestination(req.params.id, req.body, image);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
 module.exports = {
     createDestination,
     getDestinations,
-    getDestination
+    getDestination,
+    updateDestination
 }
