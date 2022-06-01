@@ -3,10 +3,10 @@ const Destination = require("../models/destination.model")
 const ApiError = require("../utils/ApiError")
 
 /**
- * 
+ * Create Destination
  * @param {Object} destinationBody 
  * @param {String} image 
- * @returns {Promise<Destination>}
+ * @returns {Promise<any>}
  */
 const createDestination = async (destinationBody, image) => {
     if (!image) {
@@ -32,7 +32,7 @@ const createDestination = async (destinationBody, image) => {
 
 /**
  * Query all Destinations
- * @returns {Promise<Destination>}
+  * @returns {Promise<any>}
  */
 const getDestinations = async () => {
     const destinations = await Destination.find();

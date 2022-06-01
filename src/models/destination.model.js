@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { toJSON } = require('./plugins');
 
-const destinationSchema = mongoose.Schema(
+const destinationSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -65,9 +65,6 @@ const destinationSchema = mongoose.Schema(
 // add plugin that converts mongoose to json
 destinationSchema.plugin(toJSON);
 
-/**
- * @typedef Destination
- */
 const Destination = mongoose.model('Destination', destinationSchema);
 
 module.exports = Destination;

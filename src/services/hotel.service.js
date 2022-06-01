@@ -6,7 +6,7 @@ const ApiError = require("../utils/ApiError");
  * Create Hotel
  * @param {Object} hotelBody 
  * @param {String} image 
- * @returns {Promise<Hotel>}
+ * @returns {Promise<any>}
  */
 const createHotel = async (hotelBody, image) => {
     if (!image) {
@@ -27,7 +27,7 @@ const createHotel = async (hotelBody, image) => {
 
 /**
  * Query all Hotels
- * @returns {Promise<Hotel>}
+ * @returns {Promise<any>}
  */
 const getHotels = async () => {
     const hotels = await Hotel.find();
