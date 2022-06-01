@@ -41,9 +41,19 @@ const updateDestination = catchAsync(async (req, res) => {
     }
 })
 
+const deleteDestination = catchAsync(async (req, res) => {
+    try {
+        const destination = await destinationService.deleteDestination(req.params.id);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
 module.exports = {
     createDestination,
     getDestinations,
     getDestination,
-    updateDestination
+    updateDestination,
+    deleteDestination
 }

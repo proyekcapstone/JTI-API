@@ -48,8 +48,15 @@ const updateDestination = {
     })
 }
 
+const deleteDestination = {
+    params: Joi.object().keys({
+        id: Joi.string().custom(objectId)
+    })
+}
+
 module.exports = {
     createDestination,
     getDestination,
-    updateDestination
+    updateDestination,
+    deleteDestination
 }

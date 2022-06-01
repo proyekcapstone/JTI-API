@@ -109,9 +109,20 @@ const updateDestination = async (id, destinationBody, imageRequset) => {
   return data;
 };
 
+/**
+ * Delete Destination by id
+ * @param {number} id
+ * @returns {Promise<any>}
+ */
+ const deleteDestination = async (id) => {
+  await Destination.findByIdAndDelete(id);
+  return "Destination Successfully Deleted!";
+};
+
 module.exports = {
   createDestination,
   getDestinations,
   getDestination,
   updateDestination,
+  deleteDestination
 };
