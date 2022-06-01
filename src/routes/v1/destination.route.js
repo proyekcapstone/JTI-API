@@ -13,4 +13,8 @@ router
     .post(uploadImg.single('image'), validate(destinationValidation.createDestination), destinationController.createDestination)
     .get(destinationController.getDestinations);
 
+router
+    .route('/:id')
+    .get(destinationController.getDestination)
+
 module.exports = router;

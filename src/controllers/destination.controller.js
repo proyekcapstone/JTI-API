@@ -22,7 +22,17 @@ const getDestinations = catchAsync(async (req, res) => {
     }
 })
 
+const getDestination = catchAsync(async (req, res) => {
+    try {
+        const destination = await destinationService.getDestination(req.params.id);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
 module.exports = {
     createDestination,
-    getDestinations
+    getDestinations,
+    getDestination
 }

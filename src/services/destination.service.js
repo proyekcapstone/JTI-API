@@ -10,7 +10,7 @@ const ApiError = require("../utils/ApiError")
  */
 const createDestination = async (destinationBody, image) => {
     if (!image) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Image Not Found!')
+        throw new ApiError(httpStatus.NOT_FOUND, 'Image Not Found!');
     }
     const destination = {
         name: destinationBody.name,
@@ -36,10 +36,27 @@ const createDestination = async (destinationBody, image) => {
  */
 const getDestinations = async () => {
     const destinations = await Destination.find();
+    if(!destinations) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Destinations Not Found!');
+    }
     return destinations;
+}
+
+/**
+ * Query Destination by id
+ * @param {number} id 
+ * @returns {Promise<any>}
+ */
+const getDestination = async (id) => {
+    const destination = await Destination.findById(id);
+    if(!destination) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Destinations Not Found!');
+    }
+    return destination;
 }
 
 module.exports = {
     createDestination,
     getDestinations,
+    getDestination
 }
