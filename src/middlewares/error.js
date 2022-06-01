@@ -1,3 +1,4 @@
+// @ts-nocheck
 const mongoose = require('mongoose');
 const httpStatus = require('http-status');
 const config = require('../config/config');

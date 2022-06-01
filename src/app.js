@@ -35,7 +35,15 @@ app.use(mongoSanitize());
 app.use(compression());
 
 // set security HTTP headers
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy());
+app.use(helmet.crossOriginEmbedderPolicy());
+app.use(helmet.crossOriginOpenerPolicy());
+app.use(helmet.crossOriginResourcePolicy());
+app.use(helmet.frameguard());
+app.use(helmet.ieNoOpen());
+app.use(helmet.noSniff());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy());
 
 // enable cors
 app.use(cors());

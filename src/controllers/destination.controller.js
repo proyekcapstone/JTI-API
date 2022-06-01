@@ -22,7 +22,38 @@ const getDestinations = catchAsync(async (req, res) => {
     }
 })
 
+const getDestination = catchAsync(async (req, res) => {
+    try {
+        const destination = await destinationService.getDestination(req.params.id);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
+const updateDestination = catchAsync(async (req, res) => {
+    try {
+        const image = req.file.path;
+        const destination = await destinationService.updateDestination(req.params.id, req.body, image);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
+const deleteDestination = catchAsync(async (req, res) => {
+    try {
+        const destination = await destinationService.deleteDestination(req.params.id);
+        res.status(httpStatus.OK).send(destination);
+    } catch (error) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
+    }
+})
+
 module.exports = {
     createDestination,
-    getDestinations
+    getDestinations,
+    getDestination,
+    updateDestination,
+    deleteDestination
 }
