@@ -11,6 +11,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "error"
+    "no-console": "off"
   }
 }

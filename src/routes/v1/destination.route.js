@@ -9,14 +9,25 @@ const { destinationController } = require('../../controllers');
 const router = express.Router();
 
 router
-    .route('/')
-    .post(uploadImg.single('image'), validate(destinationValidation.createDestination), destinationController.createDestination)
-    .get(destinationController.getDestinations);
+  .route('/')
+  .post(
+    uploadImg.single('image'),
+    validate(destinationValidation.createDestination),
+    destinationController.createDestination
+  )
+  .get(destinationController.getDestinations);
 
 router
-    .route('/:id')
-    .get(destinationController.getDestination)
-    .put(uploadImg.single('image'), validate(destinationValidation.updateDestination), destinationController.updateDestination)
-    .delete(validate(destinationValidation.deleteDestination), destinationController.deleteDestination);
+  .route('/:id')
+  .get(destinationController.getDestination)
+  .put(
+    uploadImg.single('image'),
+    validate(destinationValidation.updateDestination),
+    destinationController.updateDestination
+  )
+  .delete(
+    validate(destinationValidation.deleteDestination),
+    destinationController.deleteDestination
+  );
 
 module.exports = router;

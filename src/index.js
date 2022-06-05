@@ -8,7 +8,9 @@ mongoose.connect(config.mongoose.url).then(() => {
   logger.info('Connected to MongoDB');
   server = app.listen(config.port, () => {
     logger.info(`Server listening in http://localhost:${config.port}`);
-    logger.info(`Documentations JTI-Api in http://localhost:${config.port}/v1/docs`)
+    logger.info(
+      `Documentations JTI-Api in http://localhost:${config.port}/v1/docs`
+    );
   });
 });
 
