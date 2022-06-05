@@ -8,17 +8,36 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(auth('admin'), validate(userValidation.createUser), userController.createUser)
-  .get(auth('moderator'), validate(userValidation.getUsers), userController.getUsers);
+  .post(
+    auth('admin'),
+    validate(userValidation.createUser),
+    userController.createUser
+  )
+  .get(
+    auth('moderator'),
+    validate(userValidation.getUsers),
+    userController.getUsers
+  );
 
 router
   .route('/:userId')
-  .get(auth('moderator'), validate(userValidation.getUser), userController.getUser)
-  .patch(auth('admin'), validate(userValidation.updateUser), userController.updateUser)
-  .delete(auth('admin'), validate(userValidation.deleteUser), userController.deleteUser);
+  .get(
+    auth('moderator'),
+    validate(userValidation.getUser),
+    userController.getUser
+  )
+  .patch(
+    auth('admin'),
+    validate(userValidation.updateUser),
+    userController.updateUser
+  )
+  .delete(
+    auth('admin'),
+    validate(userValidation.deleteUser),
+    userController.deleteUser
+  );
 
 module.exports = router;
-
 
 /**
  * @swagger
