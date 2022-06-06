@@ -17,6 +17,8 @@ router
   )
   .get(destinationController.getDestinations);
 
+router.route('/search').get(destinationController.searchDestination);
+
 router
   .route('/:id')
   .get(destinationController.getDestination)
