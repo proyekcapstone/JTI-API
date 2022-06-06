@@ -30,6 +30,10 @@ const defaultRoutes = [
     path: '/culinary',
     route: culinaryRoute,
   },
+  {
+    path: '/docs',
+    route: docsRoute,
+  },
 ];
 
 const devRoutes = [
