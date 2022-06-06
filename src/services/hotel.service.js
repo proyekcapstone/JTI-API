@@ -102,8 +102,20 @@ const updateHotel = async (id, hotelBody, imageRequset) => {
  * @returns {Promise<any>}
  */
 const deleteHotel = async (id) => {
+  const hotel = await getHotelById(id);
+  await cloudinary.uploader.destroy(hotel.cloudinary_id, (error, result) => {
+    console.log(result, error);
+  });
   await Hotel.findByIdAndDelete(id);
   return 'Hotel Successfully Deleted!';
+};
+
+const searchHotel = async (query) => {
+  const searchQuery = query;
+  const hotel = await Hotel.find({
+    name: { $regex: searchQuery, $options: '$i' },
+  });
+  return hotel;
 };
 
 module.exports = {
@@ -112,4 +124,5 @@ module.exports = {
   getHotelById,
   updateHotel,
   deleteHotel,
+  searchHotel,
 };

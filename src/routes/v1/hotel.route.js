@@ -16,6 +16,8 @@ router
   )
   .get(hotelController.getHotels);
 
+router.route('/search').get(hotelController.searchHotel);
+
 router
   .route('/:id')
   .get(hotelController.getHotelById)
