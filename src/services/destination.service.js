@@ -115,9 +115,22 @@ const updateDestination = async (id, destinationBody, imageRequset) => {
  * @returns {Promise<any>}
  */
 const deleteDestination = async (id) => {
+  const destination = await getDestination(id);
+  await cloudinary.uploader.destroy(
+    destination.cloudinary_id,
+    (error, result) => {
+      console.log(result, error);
+    }
+  );
   await Destination.findByIdAndDelete(id);
   return 'Destination Successfully Deleted!';
 };
+
+const searchDestination = async (query) => {
+  const searchQuery = query;
+  const destination = await Destination.find({name: {$regex: searchQuery, $options: '$i'}})
+  return destination;
+}
 
 module.exports = {
   createDestination,
@@ -125,4 +138,5 @@ module.exports = {
   getDestination,
   updateDestination,
   deleteDestination,
+  searchDestination
 };
