@@ -23,7 +23,7 @@ const createHotel = async (hotelBody, image) => {
     address: hotelBody.address,
     city: hotelBody.city,
     province: hotelBody.province,
-    postalcode: hotelBody.postalcode,
+    postalCode: hotelBody.postalCode,
     telephone: hotelBody.telephone,
     cloudinary_id: result.public_id,
   };

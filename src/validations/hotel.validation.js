@@ -9,7 +9,7 @@ const createHotel = {
     address: Joi.string().required(),
     city: Joi.string().required(),
     province: Joi.string().required(),
-    postalcode: Joi.string().required(),
+    postalCode: Joi.string().required(),
     telephone: Joi.string().required(),
     cloudinary_id: Joi.string(),
   }),
