@@ -19,7 +19,10 @@ const createDestination = catchAsync(async (req, res) => {
 const getDestinations = catchAsync(async (req, res) => {
   try {
     const destinations = await destinationService.getDestinations();
-    res.status(httpStatus.OK).send(destinations);
+    res.status(httpStatus.OK).send({
+      message: 'Get Destinations Success',
+      destinations: destinations,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }
@@ -61,12 +64,14 @@ const deleteDestination = catchAsync(async (req, res) => {
 
 const searchDestination = catchAsync(async (req, res) => {
   try {
-    const destination = await destinationService.searchDestination(req.query.name);
+    const destination = await destinationService.searchDestination(
+      req.query.name
+    );
     res.status(httpStatus.OK).send(destination);
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }
-})
+});
 
 module.exports = {
   createDestination,
@@ -74,5 +79,5 @@ module.exports = {
   getDestination,
   updateDestination,
   deleteDestination,
-  searchDestination
+  searchDestination,
 };

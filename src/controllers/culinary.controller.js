@@ -15,8 +15,11 @@ const createCulinary = catchAsync(async (req, res) => {
 
 const getCulinarys = catchAsync(async (req, res) => {
   try {
-    const culinarys = await culinaryService.getCulinarys();
-    res.status(httpStatus.OK).send(culinarys);
+    const culinaries = await culinaryService.getCulinarys();
+    res.status(httpStatus.OK).send({
+      message: 'Get Culinaries Success',
+      culinaries: culinaries,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }

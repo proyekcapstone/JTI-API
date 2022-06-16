@@ -16,7 +16,10 @@ const createHotel = catchAsync(async (req, res) => {
 const getHotels = catchAsync(async (req, res) => {
   try {
     const hotels = await hotelService.getHotels();
-    res.status(httpStatus.OK).send(hotels);
+    res.status(httpStatus.OK).send({
+      message: 'Get Hotels Success',
+      hotels: hotels,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }
