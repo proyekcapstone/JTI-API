@@ -64,10 +64,13 @@ const deleteDestination = catchAsync(async (req, res) => {
 
 const searchDestination = catchAsync(async (req, res) => {
   try {
-    const destination = await destinationService.searchDestination(
+    const destinations = await destinationService.searchDestination(
       req.query.name
     );
-    res.status(httpStatus.OK).send(destination);
+    res.status(httpStatus.OK).send({
+      message: 'Search Destinations Success',
+      destinations: destinations,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }

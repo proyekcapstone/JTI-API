@@ -59,8 +59,11 @@ const deleteCulinary = catchAsync(async (req, res) => {
 
 const searchCulinary = catchAsync(async (req, res) => {
   try {
-    const culinary = await culinaryService.searchCulinary(req.query.name);
-    res.status(httpStatus.OK).send(culinary);
+    const culinaries = await culinaryService.searchCulinary(req.query.name);
+    res.status(httpStatus.OK).send({
+      message: 'Search Culinaries Success',
+      culinaries: culinaries,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }

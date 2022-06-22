@@ -59,8 +59,11 @@ const deleteHotel = catchAsync(async (req, res) => {
 
 const searchHotel = catchAsync(async (req, res) => {
   try {
-    const hotel = await hotelService.searchHotel(req.query.name);
-    res.status(httpStatus.OK).send(hotel);
+    const hotels = await hotelService.searchHotel(req.query.name);
+    res.status(httpStatus.OK).send({
+      message: 'Search Hotels Success',
+      hotels: hotels,
+    });
   } catch (error) {
     throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, error);
   }
